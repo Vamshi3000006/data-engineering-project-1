@@ -67,7 +67,9 @@ Set up the necessary Dockerfile and docker-compose.yml files to run Airflow.
 Follow the Apache Airflow installation guide for configuration steps.
 4. Run Data Pipelines
 Use the Airflow web interface to execute the following DAGs:
-data_ingestion_gcp_dag: Ingests data into GCS. Run this first and wait for it to complete.
+data_ingestion_gcp_dag: 
+Ingests data into GCS. 
+Run this first and wait for it to complete.
 gcs_to_bq_dag: Loads data from GCS into BigQuery.
 Monitor the task progress for both DAGs to ensure successful execution.
 5. Create a Dashboard in Google Data Studio
