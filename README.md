@@ -93,15 +93,13 @@ This project utilized the following tools and technologies:
    - Connect to your project, dataset, and table.
 3. Use the imported data to create interactive visualizations.
 4. To optimize performance, uncheck blank values in dropdowns for "State" and "Year."
-5. below is screenshot of my dashboard
-![dashboard](https://github.com/user-attachments/assets/30e3db5c-d15b-419c-8ed5-70207243bd0a)
 
 ---
 
 ## **Project Outcomes**
 This project provides a robust system to analyze historical employment data at a granular level, enabling users to make informed decisions about the job market. Below is a snapshot of the dashboard showcasing key metrics and trends.
+![dashboard](https://github.com/user-attachments/assets/30e3db5c-d15b-419c-8ed5-70207243bd0a)
 
-![Dashboard Preview](#)
 
 ---
 
