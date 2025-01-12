@@ -1,18 +1,7 @@
-Here is the entire information formatted neatly for a GitHub README file:
 
----
+**##🇺🇸 Employment/Unemployment Data in the US since 1990**
 
 
-## **Acknowledgments**
-This capstone project was developed under the guidance of **DataTalksClub**. A special thanks to the instructors:
-- **Alexey Grigorev**
-- **Sejal Vaidya**
-- **Victoria Perez Mola**
-- **Ankush Khanna**
-
-Your time, effort, and expertise are deeply appreciated!
-
-🟢 Learn Data Engineering at your own pace with [DataTalksClub's video lectures on YouTube](https://www.youtube.com).
 
 ---
 
