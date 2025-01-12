@@ -6,7 +6,10 @@
 ---
 
 ## **Problem Statement**
-The objective of this project is to create a system that tracks historical US employment data (1990–Present) using datasets from the **Bureau of Labor Statistics (BLS)**. The data provides granular insights down to the county level across the US, making it a valuable resource for individuals researching job market trends in specific regions—especially useful when considering relocation.
+The objective of this project is to create a system that tracks historical US employment data (1990–Present) using datasets from the **Bureau of Labor Statistics (BLS)**. The data provides granular insights down to the county level across the US, making it a valuable resource for individuals researching job market trends in specific regions—especially useful when considering relocation.![usa-county-map1000x760](https://github.com/user-attachments/assets/d3d7e231-edc9-4df3-a5ef-300ce3d5dfd1)
+
+
+
 
 ---
 
@@ -75,10 +78,13 @@ This project utilized the following tools and technologies:
 ### **4. Run Data Pipelines**
 1. Use the Airflow web interface to execute the following DAGs:
    - **`data_ingestion_gcp_dag`**: Ingests data into GCS. Run this first and wait for it to complete.
+   - ![airflow](https://github.com/user-attachments/assets/6b94c1db-ee10-4bb6-b951-854d7e1b702b)
+
    - **`gcs_to_bq_dag`**: Loads data from GCS into BigQuery.
 2. Monitor the task progress for both DAGs to ensure successful execution.
 
----
+---![dag1](https://github.com/user-attachments/assets/086c59e6-fd06-4c39-8fce-abeae3e86053)
+
 
 ### **5. Create a Dashboard in Google Data Studio**
 1. Open [Google Data Studio](https://datastudio.google.com/).
@@ -87,6 +93,8 @@ This project utilized the following tools and technologies:
    - Connect to your project, dataset, and table.
 3. Use the imported data to create interactive visualizations.
 4. To optimize performance, uncheck blank values in dropdowns for "State" and "Year."
+5. below is screenshot of my dashboard
+![dashboard](https://github.com/user-attachments/assets/30e3db5c-d15b-419c-8ed5-70207243bd0a)
 
 ---
 
