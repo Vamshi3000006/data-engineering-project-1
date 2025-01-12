@@ -1,85 +1,90 @@
 # 🇺🇸  Employment/Unemployment Data in the US since 1990
 
-# Data Engineering Zoomcamp Final Capstone Project
-🟢 This capstone project was taught by [DataTalksClub](https://datatalks.club/). A big thank you to instructors [Alexey Grigorev](https://www.linkedin.com/in/agrigorev/), [Sejal Vaidya](https://www.linkedin.com/in/vaidyasejal/), [Victoria Perez Mola](https://www.linkedin.com/in/victoriaperezmola/), and [Ankush Khanna](https://www.linkedin.com/in/ankushkhanna2/) for their time and effort leading this course!
 
 🟢 You can learn Data Engineering topics on your own time [here](https://github.com/DataTalksClub/data-engineering-zoomcamp) and follow along with the [video lectures](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb) on YouTube!
 
 # Problem Description
-The goal of this project is to track historical US employment data (1990-Present). The source of the datasets I've used were from the Bureau Labor of Statistics (source: [BLS](https://www.bls.gov/lau/)). This dataset includes data down to each counties in each state in the US to view things more precisely residentially. This can be a good tool to use if you are looking to move to a new area and would like to research about the job market in the area.
+The objective of this project is to create a system that tracks historical US employment data (1990–Present) using datasets from the Bureau of Labor Statistics (BLS). The data provides granular insights down to the county level across the US, making it a valuable resource for individuals researching job market trends in specific regions—especially useful when considering relocation.
 
 ![alt text](./img/usa-county-map1000x760.jpeg)
 
 # Used Technologies
-For this project, I used the following tools:
-* Google Cloud Platform (GCP) - main cloud provider
-* Google Cloud Storage (GCS) - data lake storage under GCP
-* BigQuery - data warehouse storage under GCP
-* Python - main programming language
-* Docker - containerization (docker-compose)
-* Airflow - orchestration tool for pipeline
-* Terraform - Infrastructure-as-Code (IaC) tool
-* Spark - data processing and transformations
-* Google Data Studio - data visualizations
+This project utilized the following tools and technologies:
+
+Google Cloud Platform (GCP): Main cloud provider
+Google Cloud Storage (GCS): Data lake storage
+BigQuery: Data warehouse
+Python: Main programming language
+Docker: Containerization (via Docker Compose)
+Apache Airflow: Workflow orchestration
+Terraform: Infrastructure-as-Code (IaC)
+Apache Spark: Data processing and transformation
+Google Data Studio: Dashboard visualization
 
 # Reproducing from scratch
-## 1. To reproduce this code entirely from scratch, you will need to create a GCP account:
-Set up your free GCP account! You'll get free $300 credit or 90 days of free usage.
-* Set up your  very own [service account](https://cloud.google.com/)
-* Create key in JSON
-* Save to your directory
-* download and install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
-* run `export GOOGLE_APPLICATION_CREDENTIALS=<path/to/service/key>.json`
-* run `gcloud auth application-default login`
-* new browser window will pop up having you authenticate the gcloud CLI. Make sure it says `You are now authenticated with the gcloud CLI!`
+#1. GCP Account Setup
+Sign up for a free GCP account (includes $300 credit or 90 days of free usage).
 
-## Next for GCP: Add permissions to your Service Account!
-* IAM & Admin > IAM. Click on the edit icon for your project
-* Add roles
-    * Storage Admin (for the bucket)
-    * Storage Object Admin (for objects in the bucket -- read/write/create/delete)
-    * BigQuery Admin
-* Enable APIs
-    * https://console.cloud.google.com/apis/library/iam.googleapis.com
-    * https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
+Set up a service account:
 
-## 2. You'll need your IaC to build your infrastructure. In this project, Terraform is used
-Download Terraform!
-* Download here: https://www.terraform.io/downloads
+Generate a JSON key file for the service account.
+Save it to your local directory.
+Install and configure Google Cloud CLI:
 
-Initializing Terraform
-* Create a new directory with `main.tf`, and initialize your config file. [How to Start](https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build?in=terraform/gcp-get-started)
-    * *OPTIONAL* Create `variables.tf` files to store your variables
-* `terraform init`
-* `terraform plan`
-* `terraform apply`
+Download and install Google Cloud CLI.
+Authenticate with GCP:
+bash
+export GOOGLE_APPLICATION_CREDENTIALS=<path/to/service/key>.json
+gcloud auth application-default login
 
-## 3. Set up Docker, Dockerfile, and docker-compose to run Airflow
-Steps to do that is provided [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_2_data_ingestion/airflow).
 
-## 4. Run the DAGs
-In the screenshot below:
-* run the `data_ingestion_gcp_dag` first and wait for it to complete. 
-* Finally, run `gcs_to_bq_dag`.
-![alt text](./img/airflow.png)
 
-Below is a view of the tasks for each dag above:
+Assign permissions to the service account:
 
-`data_ingestion_gcp_dag`
+Navigate to IAM & Admin > IAM in the GCP console.
+Add the following roles:
+Storage Admin (for bucket management)
+Storage Object Admin (for object-level operations)
+BigQuery Admin (for data warehouse management)
+Enable required APIs:
 
-![alt text](./img/dag1.png)
+IAM API
+IAM Credentials API
+2. Infrastructure Setup with Terraform
+Download and install Terraform.
+Initialize your Terraform configuration:
+Create a directory with a main.tf file for your configuration.
+Run the following commands:
+bash
+Copy code
+terraform init
+terraform plan
+terraform apply
+Optionally, use a variables.tf file to store configuration variables.
+3. Set Up Apache Airflow with Docker
+Install Docker and Docker Compose.
+Set up the necessary Dockerfile and docker-compose.yml files to run Airflow.
+Follow the Apache Airflow installation guide for configuration steps.
+4. Run Data Pipelines
+Use the Airflow web interface to execute the following DAGs:
+data_ingestion_gcp_dag: Ingests data into GCS. Run this first and wait for it to complete.
+gcs_to_bq_dag: Loads data from GCS into BigQuery.
+Monitor the task progress for both DAGs to ensure successful execution.
+5. Create a Dashboard in Google Data Studio
+Open Google Data Studio.
+Create a new data source:
+Select BigQuery as the source.
+Connect to your project, dataset, and table.
+Use the imported data to create interactive visualizations.
+To optimize performance, uncheck blank values in dropdowns for "State" and "Year."
+Project Outcomes
+This project provides a robust system to analyze historical employment data at a granular level, enabling users to make informed decisions about the job market. Below is a snapshot of the dashboard showcasing key metrics and trends.
 
-`gcs_to_bq_dag`
 
-![alt text](./img/dag2.png)
-## 5. Create your dashboard
-* Go to [Google Data Studio](https://datastudio.google.com) 
-* Click `Create` > `Data Source`
-* Select `BigQuery` > Your Project ID > Dataset > Table
-* Click on `Connect` on the top-right and your data should now be imported to use for your dashboard!
 
-Below is a screenshot of my [dashboard](https://datastudio.google.com/reporting/086e2c44-85a5-4ce8-b8ee-98be102a0b6c).
-![alt text](./img/dashboard.png)
-* **NOTE**: To speed up the process of the dashboard, on the dropdowns on the top-right, **UNCHECK** the blanks in `State` and `year`. (I'll have to fix that!)
+Contact and Feedback
+For questions, feel free to:
 
-Thank you again to everyone for their dedication and support! If you have any questions, please feel free to open a PR or send me an email. Bless!
+Open a pull request (PR) on this repository.
+Send an email.
+Thank you for your support and interest in this project! 🚀
